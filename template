@@ -1,0 +1,26 @@
+/usr/bin/kvm \
+ -smbios 'type=1,uuid=<RANDOM UUID>' \
+ -drive 'if=pflash,unit=0,format=raw,readonly=on,file=/usr/share/pve-edk2-firmware//OVMF_CODE_4M.secboot.fd' \
+ -drive 'if=pflash,unit=1,format=raw,id=drive-efidisk0,size=540672,file=/dev/zvol/rpool/data/vm-102-disk-0' \
+ -smp '2,sockets=1,cores=2,maxcpus=2' \
+ -nodefaults \
+ -vnc 'unix:/var/run/qemu-server/102.vnc,password=on' \
+ -cpu 'Haswell-noTSX,enforce,+kvm_pv_eoi,+kvm_pv_unhalt,vendor=GenuineIntel' \
+ -m 8192 \
+ -device 'vmgenid,guid=<RANDOM UUIC>' \
+ -device 'usb-tablet,id=tablet,bus=ehci.0,port=1' \
+ -device 'vmware-svga,id=vga,bus=pcie.0,addr=0x1' \
+ -chardev 'socket,path=/var/run/qemu-server/102.qga,server=on,wait=off,id=qga0' \
+ -device 'virtio-serial,id=qga0,bus=pci.0,addr=0x8' \
+ -device 'virtserialport,chardev=qga0,name=org.qemu.guest_agent.0' \
+ -iscsi 'initiator-name=iqn.1993-08.org.debian:01:6189a1634d5' \
+ -drive 'file=/var/lib/vz/template/iso/OpenCore-v19.iso,if=none,id=drive-ide2,format=raw,cache=none,aio=io_uring,detect-zeroes=on' \
+ -device 'ide-hd,bus=ide.1,unit=0,drive=drive-ide2,id=ide2' \
+ -device 'virtio-net-pci,mac=<APPLE MAC>,netdev=net0,bus=pci.0,addr=0x12,id=net0,rx_queue_size=1024,tx_queue_size=1024' \
+ -machine 'type=q35' \
+ -device 'isa-applesmc,osk=<OSK>' \
+ -smbios 'type=2' \
+ -device 'usb-kbd,bus=ehci.0,port=2' \
+ -global 'nec-usb-xhci.msi=off' \
+ -global 'ICH9-LPC.acpi-pci-hotplug-with-bridge-support=off' \
+ -cpu 'Haswell-noTSX,vendor=GenuineIntel,+invtsc,+hypervisor,kvm=on,vmware-cpuid-freq=on,-pcid'
