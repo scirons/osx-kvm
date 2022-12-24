@@ -6,8 +6,6 @@ cores="2"
 threads="4"
 ram="4G"
 
-virsh nodedev-detach pci_0000_03_00_0
-virsh nodedev-detach pci_0000_03_00_1
 
 qemu-system-x86_64 \
     -nodefaults \
@@ -30,13 +28,6 @@ qemu-system-x86_64 \
     -device ide-hd,bus=sata.1,drive=opencore,bootindex=1 \
     -drive file=/dev/sdc,format=raw,if=virtio \
 	  -monitor stdio \
-    -vga none \
-    -nographic \
-    -device vfio-pci,host=03:00.0,bus=pcie.0,romfile=original.rom \
-    -device vfio-pci,host=03:00.1,bus=pcie.0 \
-    -device usb-host,vendorid=0x17ef,productid=0x6080 \
+    -vga vmware \
     -netdev user,id=net0 -device virtio-net-pci,netdev=net0,id=net0,mac=52:54:00:c9:18:27 \
     $@
-
-virsh nodedev-reattach pci_0000_03_00_0
-virsh nodedev-reattach pci_0000_03_00_1
