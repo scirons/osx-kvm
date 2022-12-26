@@ -1,26 +1,12 @@
-<?xml version='1.0' encoding='UTF-8'?>
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
-<!--
-	macOS libvirt XML configuration.
-
-	Run "virt-xml-validate macOS-libvirt-Catalina.xml" to validate this file.
-
-	To install this file, you may place it at ~/.config/libvirt/qemu/
-	and run: virsh define macOS-libvirt.xml.
-
-	This configuration has been tested in Ubuntu 20.04 with stock QEMU-KVM.
-
-	Move/rename images and loader/nvmram files and paths as you wish.
-
--->
   <name>macOS</name>
-  <uuid>2aca0dd6-cec9-4717-9ab2-0b7b13d111c3</uuid>
+  <uuid>ad9fe5f7-9d85-4d82-8bf9-d78d0ced2588</uuid>
   <title>macOS</title>
-  <memory unit='KiB'>4194304</memory>
-  <currentMemory unit='KiB'>4194304</currentMemory>
-  <vcpu placement='static'>4</vcpu>
+  <memory unit='KiB'>6291456</memory>
+  <currentMemory unit='KiB'>6291456</currentMemory>
+  <vcpu placement='static'>6</vcpu>
   <os>
-    <type arch='x86_64' machine='pc-q35-7.2'>hvm</type>
+    <type arch='x86_64' machine='pc-q35-4.2'>hvm</type>
     <loader readonly='yes' type='pflash'>/home/sciron/.local/src/osx-kvm/ovmf/OVMF_CODE.fd</loader>
     <nvram>/home/sciron/.local/src/osx-kvm/ovmf/OVMF_VARS-1024x768.fd</nvram>
   </os>
@@ -28,6 +14,9 @@
     <acpi/>
     <apic/>
   </features>
+  <cpu mode='custom' match='exact' check='none'>
+    <model fallback='forbid'>qemu64</model>
+  </cpu>
   <clock offset='utc'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>
@@ -44,6 +33,12 @@
       <target dev='sda' bus='sata'/>
       <boot order='2'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <disk type='block' device='disk'>
+      <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
+      <source dev='/dev/disk/by-id/ata-SanDisk_SDSSDA120G_160621402906'/>
+      <target dev='vda' bus='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
     </disk>
     <controller type='sata' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
@@ -84,6 +79,15 @@
       <target chassis='7' port='0xe'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x6'/>
     </controller>
+    <controller type='pci' index='8' model='pcie-root-port'>
+      <model name='pcie-root-port'/>
+      <target chassis='8' port='0xf'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x7'/>
+    </controller>
+    <controller type='pci' index='9' model='pcie-to-pci-bridge'>
+      <model name='pcie-pci-bridge'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </controller>
     <controller type='virtio-serial' index='0'>
       <address type='pci' domain='0x0000' bus='0x02' slot='0x00' function='0x0'/>
     </controller>
@@ -102,12 +106,11 @@
       <master startport='4'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x2'/>
     </controller>
-    <!-- Make sure you put your nic in bus 0x0 and slot 0x0y(y is numeric), this will make nic built-in and apple-store work-->
-    <interface type="bridge">
-      <mac address="52:54:00:e6:85:40"/>
-      <source bridge="virbr0"/>
-      <model type="vmxnet3"/>
-      <address type="pci" domain="0x0000" bus="0x00" slot="0x00" function="0x0"/>
+    <interface type='network'>
+      <mac address='52:54:00:d5:f9:1a'/>
+      <source network='default'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
     </interface>
     <serial type='pty'>
       <target type='isa-serial' port='0'>
@@ -121,40 +124,43 @@
       <target type='virtio' name='org.qemu.guest_agent.0'/>
       <address type='virtio-serial' controller='0' bus='0' port='1'/>
     </channel>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
     <graphics type='spice' autoport='yes'>
       <listen type='address'/>
     </graphics>
+    <audio id='1' type='spice'/>
     <video>
-      <model type="vga" vram="65536" heads="1" primary="yes"/>
+      <model type='none'/>
     </video>
-    <!-- If you wanna passthrough GPU, make sure the gfx and audio are in the same bus (like 0x01) but different function (0x00 and 0x01)-->
-    <!-- <hostdev mode='subsystem' type='pci' managed='yes'>
-      <driver name='vfio'/>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
       <source>
-        <address domain='0x0000' bus='0x2d' slot='0x00' function='0x0'/>
+        <address domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
       </source>
-      <rom file='/mnt/disks/backups/BIOS/RX580/Ellesmere.rom'/>
-      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0' multifunction='on'/>
+      <rom bar='on' file='/home/sciron/.local/src/osx-kvm/original.rom'/>
+      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
     </hostdev>
     <hostdev mode='subsystem' type='pci' managed='yes'>
-      <driver name='vfio'/>
       <source>
-        <address domain='0x0000' bus='0x2d' slot='0x00' function='0x1'/>
+        <address domain='0x0000' bus='0x03' slot='0x00' function='0x1'/>
       </source>
-      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x1'/>
-    </hostdev> -->
-    <!-- If you wanna passthrough onboard audio(like 30:00.4), make sure you put it in bus 0x00 and slot 0x0y(y is numeric), otherwise AppleALC won't recognized it -->
-    <!-- <hostdev mode='subsystem' type='pci' managed='yes'>
-      <driver name='vfio'/>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    </hostdev>
+    <hostdev mode='subsystem' type='usb' managed='yes'>
       <source>
-        <address domain='0x0000' bus='0x30' slot='0x00' function='0x4'/>
+        <vendor id='0x17ef'/>
+        <product id='0x6080'/>
       </source>
-      <address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/>
-    </hostdev> -->
+      <address type='usb' bus='0' port='1'/>
+    </hostdev>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <source>
+        <address domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+      </source>
+      <address type='pci' domain='0x0000' bus='0x07' slot='0x00' function='0x0'/>
+    </hostdev>
     <memballoon model='none'/>
   </devices>
-  <!-- Note: Enable the next line when SELinux is enabled -->
-  <!-- seclabel type='dynamic' model='selinux' relabel='yes'/> -->
   <qemu:commandline>
     <qemu:arg value='-device'/>
     <qemu:arg value='isa-applesmc,osk=ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc'/>
@@ -166,11 +172,6 @@
     <qemu:arg value='-device'/>
     <qemu:arg value='usb-kbd'/>
     <qemu:arg value='-cpu'/>
-    <qemu:arg value='Haswell-noTSX,kvm=on,vendor=GenuineIntel,+invtsc,+hypervisor,vmware-cpuid-freq=on,+kvm_pv_unhalt,+kvm_pv_eoi,+hypervisor,+invtsc,+pcid,+ssse3,+sse4.2,+popcnt,+avx,+aes,+fma,+fma4,+bmi1,+bmi2,+xsave,+xsaveopt,check'/>
-    <!-- <qemu:arg value='Penryn,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
-    <!-- If you wanna use cpu host-passthrough mode, uncomments below-->
-    <!-- <qemu:arg value='host,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
-    <!-- If you wanna use cpu emulating mode like Skylake-Server, uncomments below-->
-    <!-- <qemu:arg value='Skylake-Server,vendor=GenuineIntel,+hypervisor,+invtsc,kvm=on,+fma,+avx,+avx2,+aes,+ssse3,+sse4_2,+popcnt,+sse4a,+bmi1,+bmi2'/> -->
+    <qemu:arg value='Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,+ssse3,+sse4.2,+popcnt,+avx,+aes,+xsave,+xsaveopt,check'/>
   </qemu:commandline>
 </domain>

@@ -1,0 +1,116 @@
+[22;31mIOMMU group 17[0m
+	[22;34m03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 HDMI Audio [1002:ab38][0m
+	[22;36m	Driver: snd_hda_intel[0m
+[22;31mIOMMU group 7[0m
+	[22;34m00:14.0 SMBus [0c05]: Advanced Micro Devices, Inc. [AMD/ATI] SBx00 SMBus Controller [1002:4385] (rev 42)[0m
+	[22;36m	Driver: piix4_smbus[0m
+[22;31mIOMMU group 15[0m
+	[22;34m02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479][0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 5[0m
+	[22;34m00:12.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB OHCI0 Controller [1002:4397][0m
+	[22;36m	Driver: ohci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub[0m
+	[22;34m00:12.2 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB EHCI Controller [1002:4396][0m
+	[22;36m	Driver: ehci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+[22;31mIOMMU group 13[0m
+	[22;34m00:16.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB OHCI0 Controller [1002:4397][0m
+	[22;36m	Driver: ohci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 007 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub[0m
+	[22;34m00:16.2 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB EHCI Controller [1002:4396][0m
+	[22;36m	Driver: ehci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+[22;31mIOMMU group 3[0m
+	[22;34m00:09.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] RD890/RD9x0/RX980 PCI to PCI bridge (PCI Express GPP Port 4) [1002:5a1c][0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 11[0m
+	[22;34m00:14.5 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB OHCI2 Controller [1002:4399][0m
+	[22;36m	Driver: ohci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub[0m
+[22;31mIOMMU group 1[0m
+	[22;34m00:02.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] RD890/RD9x0/RX980 PCI to PCI bridge (PCI Express GFX port 0) [1002:5a16][0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 18[0m
+	[22;34m04:00.0 Non-Volatile memory controller [0108]: Phison Electronics Corporation E12 NVMe Controller [1987:5012] (rev 01)[0m
+	[22;36m	Driver: nvme[0m
+[22;31mIOMMU group 8[0m
+	[22;34m00:14.2 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] SBx00 Azalia (Intel HDA) [1002:4383] (rev 40)[0m
+	[22;36m	Driver: snd_hda_intel[0m
+[22;31mIOMMU group 16[0m
+	[22;34m03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 [Radeon RX 5600 OEM/5600 XT / 5700/5700 XT] [1002:731f] (rev c1)[0m
+	[22;36m	Driver: amdgpu[0m
+[22;31mIOMMU group 6[0m
+	[22;34m00:13.0 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB OHCI0 Controller [1002:4397][0m
+	[22;36m	Driver: ohci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 011 Device 003: ID 17ef:6080 Lenovo Lenovo USB Travel Keyboard with Ultra Nav[0m
+		[22;32m	Bus 011 Device 002: ID 04b3:3016 IBM Corp. UltraNav Keyboard Hub[0m
+		[22;32m	Bus 011 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub[0m
+	[22;34m00:13.2 USB controller [0c03]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 USB EHCI Controller [1002:4396][0m
+	[22;36m	Driver: ehci-pci[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+[22;31mIOMMU group 14[0m
+	[22;34m01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)[0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 4[0m
+	[22;34m00:11.0 SATA controller [0106]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 SATA Controller [AHCI mode] [1002:4391] (rev 40)[0m
+	[22;36m	Driver: ahci[0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: ST320LT007-9ZV14[0m
+		[22;32m	sda    298.1G [0m
+		[22;32m	└─sda1 298.1G /home/sciron/Design[0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: WDC WD20EFRX-68E[0m
+		[22;32m	sdb           1.8T [0m
+		[22;32m	├─sdb1        1.5T [0m
+		[22;32m	│ └─cryptdox  1.5T /home/sciron/Documents[0m
+		[22;32m	└─sdb2        327G [0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: DVDRAM GH24NS95 [0m
+		[22;32m	sr0  1024M [0m
+		[22;36mBlock device:[0m
+		[22;32m	Model: SanDisk SDSSDA12[0m
+		[22;32m	sdc    111.8G [0m
+		[22;32m	├─sdc1   200M [0m
+		[22;32m	└─sdc2 111.6G [0m
+[22;31mIOMMU group 12[0m
+	[22;34m00:15.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] SB700/SB800/SB900 PCI to PCI bridge (PCIE port 0) [1002:43a0][0m
+	[22;36m	Driver: pcieport[0m
+	[22;34m00:15.1 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] SB700/SB800/SB900 PCI to PCI bridge (PCIE port 1) [1002:43a1][0m
+	[22;36m	Driver: pcieport[0m
+	[22;34m07:00.0 Ethernet controller [0200]: Qualcomm Atheros Killer E220x Gigabit Ethernet Controller [1969:e091] (rev 10)[0m
+	[22;36m	Driver: alx[0m
+	[22;34m08:00.0 USB controller [0c03]: VIA Technologies, Inc. VL805/806 xHCI USB 3.0 Controller [1106:3483] (rev 01)[0m
+	[22;36m	Driver: xhci_hcd[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 005 Device 003: ID 320c:1b0a Soundprese Soundprese HD Microphones[0m
+		[22;32m	Bus 005 Device 002: ID 2109:3431 VIA Labs, Inc. Hub[0m
+		[22;32m	Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 010 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub[0m
+[22;31mIOMMU group 2[0m
+	[22;34m00:06.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] RD890/RD9x0/RX980 PCI to PCI bridge (PCI Express GPP Port 2) [1002:5a1a][0m
+	[22;36m	Driver: pcieport[0m
+[22;31mIOMMU group 10[0m
+	[22;34m00:14.4 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] SBx00 PCI to PCI Bridge [1002:4384] (rev 40)[0m
+	[22;36m	Driver: none[0m
+[22;31mIOMMU group 0[0m
+	[22;34m00:00.0 Host bridge [0600]: Advanced Micro Devices, Inc. [AMD/ATI] RD9x0/RX980 Host Bridge [1002:5a14] (rev 02)[0m
+	[22;36m	Driver: none[0m
+[22;31mIOMMU group 19[0m
+	[22;34m05:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM1143 USB 3.1 Host Controller [1b21:1343][0m
+	[22;36m	Driver: xhci_hcd[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 008 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub[0m
+		[22;36mUsb bus:[0m
+		[22;32m	Bus 009 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub[0m
+[22;31mIOMMU group 9[0m
+	[22;34m00:14.3 ISA bridge [0601]: Advanced Micro Devices, Inc. [AMD/ATI] SB7x0/SB8x0/SB9x0 LPC host controller [1002:439d] (rev 40)[0m
+	[22;36m	Driver: none[0m
